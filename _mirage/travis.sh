@@ -32,8 +32,8 @@ if [ "$MIRAGE_BACKEND" = "xen" -a "$DEPLOY" = "1" -a "$TRAVIS_PULL_REQUEST" = "f
     echo "  UserKnownHostsFile=/dev/null" >> ~/.ssh/config
 
     # configure travis git details
-    #git config --global user.email "user@example.com" # this doesn't exist
-    #git config --global user.name "Travis Build Bot"
+    git config --global user.email "user@example.com"
+    git config --global user.name "Travis Build Bot"
 
     # Do the actual work for deployment
     git clone git@some_user:amirmc/www-test-deploy
