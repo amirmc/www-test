@@ -15,8 +15,8 @@ let fat_ro dir =
   kv_ro_of_fs (fat_of_files ~dir ())
 
 let fs = match mode with
-  | `Fat    -> fat_ro "../site"
-  | `Crunch -> crunch "../site"
+  | `Fat    -> fat_ro "../_site"
+  | `Crunch -> crunch "../_site"
 
 let net =
   try match Sys.getenv "NET" with
