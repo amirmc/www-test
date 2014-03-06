@@ -3,7 +3,7 @@ before_script: cd _mirage
 script: bash -ex travis.sh
 env:
   matrix:
-  - MIRAGE_BACKEND=xen DEPLOY=0
+  - MIRAGE_BACKEND=xen DEPLOY=1
   - MIRAGE_BACKEND=unix
   global:
   - secure: BH4gmh9n0HmTg01tx5gguFnpkjrzRkxEROgspa7/J6YEdr/ub93XJ2nYNdX4BjdYPBb3piBvmhIUbq3pqXjr59bhNd3griIcRqDVrF23s1vsM7dLqKCnMNVCZCYB2iI5627aA/8+WsCdAojzvCZmJNQ6/7iUHBs6JhI+3Nqatgc=
