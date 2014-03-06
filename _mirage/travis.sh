@@ -17,9 +17,7 @@ mirage build
 # DEPLOYMENT
 #
 # push a compressed xen VM to a specific repo (for deployment elsewhere)
-if [ "$MIRAGE_BACKEND" = "xen" 
-        -a "$DEPLOY" = "1" 
-        -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
+if [ "$MIRAGE_BACKEND" = "xen" -a "$DEPLOY" = "1" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
 
     # load up github SSH key and set up hosts file
     opam install travis-senv
@@ -34,12 +32,12 @@ if [ "$MIRAGE_BACKEND" = "xen"
     echo "  UserKnownHostsFile=/dev/null" >> ~/.ssh/config
 
     # configure travis git details
-    git config --global user.email "user@example.com" # this doesn't exist
-    git config --global user.name "Travis Build Bot"
+    #git config --global user.email "user@example.com" # this doesn't exist
+    #git config --global user.name "Travis Build Bot"
 
     # Do the actual work for deployment
-    git clone git@deploy-user:your-github-username/your-deployment-repo
-    cd your-deployment-repo
+    git clone git@deploy-user:amirmc/www-test-deploy
+    cd www-test-deploy
     rm -rf $TRAVIS_COMMIT     # to replace previous if being rebult
     mkdir -p $TRAVIS_COMMIT
     cp ../mir-www.xen ../config.ml $TRAVIS_COMMIT
@@ -47,7 +45,6 @@ if [ "$MIRAGE_BACKEND" = "xen"
     git pull --rebase   # in case there are changes since cloning
     echo $TRAVIS_COMMIT > latest    # update ref to most recent
     git add $TRAVIS_COMMIT latest         # add VM and ref to staging
-    ;;
 
     # commit and push the changes
     git commit -m "adding $TRAVIS_COMMIT built for $MIRAGE_BACKEND"
