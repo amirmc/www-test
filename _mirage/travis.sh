@@ -25,7 +25,7 @@ if [ "$MIRAGE_BACKEND" = "xen" -a "$DEPLOY" = "1" -a "$TRAVIS_PULL_REQUEST" = "f
     mkdir -p ~/.ssh
     travis-senv decrypt > $SSH_DEPLOY_KEY
     chmod 600 $SSH_DEPLOY_KEY # owner can read and write
-    echo "Host $DEPLOY_USER github.com"   >> ~/.ssh/config
+    echo "Host some_user github.com"   >> ~/.ssh/config
     echo "  Hostname github.com"          >> ~/.ssh/config
     echo "  StrictHostKeyChecking no"     >> ~/.ssh/config
     echo "  CheckHostIP no"               >> ~/.ssh/config
@@ -36,7 +36,7 @@ if [ "$MIRAGE_BACKEND" = "xen" -a "$DEPLOY" = "1" -a "$TRAVIS_PULL_REQUEST" = "f
     #git config --global user.name "Travis Build Bot"
 
     # Do the actual work for deployment
-    git clone git@deploy-user:amirmc/www-test-deploy
+    git clone git@some_user:amirmc/www-test-deploy
     cd www-test-deploy
     rm -rf $TRAVIS_COMMIT     # to replace previous if being rebult
     mkdir -p $TRAVIS_COMMIT
