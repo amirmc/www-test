@@ -16,8 +16,10 @@ mirage build
 #############################
 # DEPLOYMENT
 #
-# push a compressed xen VM to a specific repo (for deployment elsewhere)
-if [ "$MIRAGE_BACKEND" = "xen" -a "$DEPLOY" = "1" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
+# Push a compressed xen VM to a specific repo (for deployment elsewhere)
+if [ "$MIRAGE_BACKEND" = "xen" 
+            -a "$DEPLOY" = "1"
+            -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
 
     # load up github SSH key and set up hosts file
     opam install travis-senv
